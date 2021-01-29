@@ -11,10 +11,11 @@ spec:
   rules:
   - host: grafana.example.net
     http:
-      paths: /
-      - backend:
-          serviceName: prometheus-grafana
-          servicePort: 3000
+      paths:
+        - path: /
+          backend:
+            serviceName: prometheus-grafana
+            servicePort: 3000
   tls:
     - hosts:
       - grafana.example.net
