@@ -11,11 +11,13 @@ spec:
   rules:
   - host: elastic.example.net
     http:
-      paths: /
-      - backend:
-          serviceName: elasticsearch-master-headless
-          servicePort: 9200
+      paths:
+        - path: /
+          backend:
+            serviceName: elasticsearch-master-headless
+            servicePort: 9200
   tls:
     - hosts:
       - elastic.example.net
       secretName: example-net-tls
+
