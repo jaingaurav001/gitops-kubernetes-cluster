@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: grafana.example.net
+    http:
+      paths: /
+      - backend:
+          serviceName: prometheus-grafana
+          servicePort: 3000
+  tls:
+    - hosts:
+      - grafana.example.net
+      secretName: example-net-tls
