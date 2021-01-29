@@ -11,10 +11,11 @@ spec:
   rules:
   - host: kibana.example.net
     http:
-      paths: /
-      - backend:
-          serviceName: kibana-kibana
-          servicePort: 5601
+      paths:
+        - path: /
+          backend:
+            serviceName: kibana-kibana
+            servicePort: 5601
   tls:
     - hosts:
       - kibana.example.net
