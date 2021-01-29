@@ -15,5 +15,24 @@ spec:
     helm:
       valueFiles:
       - values.yaml
+
+      # Values file as block file
+      values: |
+        replicas: 1
+        minimumMasterNodes: 1
+        esJavaOpts: "-Xmx512m -Xms512m"
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "1Gi"
+          limits:
+            cpu: "1000m"
+            memory: "2Gi"
+        volumeClaimTemplate:
+          accessModes: [ "ReadWriteOnce" ]
+          resources:
+            requests:
+              storage: 10Gi
     repoURL: https://helm.elastic.co
     targetRevision: 7.6.1
+
