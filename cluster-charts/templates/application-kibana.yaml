@@ -15,5 +15,15 @@ spec:
     helm:
       valueFiles:
       - values.yaml
+
+      # Values file as block file
+      values: |
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "1Gi"
+          limits:
+            cpu: "1000m"
+            memory: "2Gi"
     repoURL: https://helm.elastic.co
     targetRevision: 7.6.1
